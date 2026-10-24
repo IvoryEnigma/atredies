@@ -21,6 +21,7 @@ import {
 import { useAuth } from './AuthContext';
 import { supabase, isSupabaseConfigured } from '../services/supabase';
 import { saveResourceFile, deleteResourceFile } from '../utils/fileStorage';
+import { uploadFile, deleteFile } from '../utils/supabaseStorage';
 
 interface AcademicContextType {
   subjects: Subject[];
@@ -371,9 +372,32 @@ export const AcademicProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     const newId = 'res-' + Date.now();
     let finalUrl = res.file_url;
 
+    // If we have a file blob, try to upload to Supabase Storage
     if (fileBlob) {
+      // Save locally for offline fallback
       saveResourceFile(newId, fileBlob);
-      if (!finalUrl || finalUrl === 'https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf') {
+
+      if (isSupabaseConfigured && supabase) {
+        // Upload to Supabase Storage (fire-and-forget)
+        const path = `${newId}/${(fileBlob as File).name || 'blob'}`;
+        uploadFile(path, fileBlob).then((url) => {
+          if (url) {
+            // Update state with real URL
+            setResources((prev) =>
+              prev.map((r) => (r.id === newId ? { ...r, file_url: url } : r))
+            );
+            // Sync DB entry with real URL
+            if (user?.id && !user.id.startsWith('usr-ait-cadet') && supabase) {
+              safeBackgroundOp(
+                supabase.from('resources').update({ file_url: url }).eq('id', newId)
+              );
+            }
+          }
+        });
+        // Temporary placeholder URL until upload resolves
+        finalUrl = URL.createObjectURL(fileBlob);
+      } else {
+        // Offline mode: use object URL
         finalUrl = URL.createObjectURL(fileBlob);
       }
     }
@@ -387,21 +411,23 @@ export const AcademicProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     };
     setResources((prev) => [newRes, ...prev]);
 
-    // Push to Supabase if live
+    // Insert metadata into Supabase DB (file_url may be placeholder until upload resolves)
     if (isSupabaseConfigured && supabase && user?.id && !user.id.startsWith('usr-ait-cadet')) {
-      safeBackgroundOp(supabase.from('resources').insert({
-        subject_id: res.subject_id,
-        unit: res.unit,
-        title: res.title,
-        description: res.description,
-        type: res.type,
-        file_url: res.file_url,
-        file_size: res.file_size,
-        uploaded_by: user.id,
-        contributor_name: res.contributor_name,
-        is_verified: res.is_verified,
-        downloads_count: 0,
-      }));
+      safeBackgroundOp(
+        supabase.from('resources').insert({
+          subject_id: res.subject_id,
+          unit: res.unit,
+          title: res.title,
+          description: res.description,
+          type: res.type,
+          file_url: finalUrl,
+          file_size: res.file_size,
+          uploaded_by: user.id,
+          contributor_name: res.contributor_name,
+          is_verified: res.is_verified,
+          downloads_count: 0,
+        })
+      );
     }
   };
 
@@ -416,9 +442,18 @@ export const AcademicProvider: React.FC<{ children: React.ReactNode }> = ({ chil
   };
 
   const deleteResource = (resourceId: string) => {
+    // Remove local file backup
     deleteResourceFile(resourceId);
+    // Remove from local state
     setResources((prev) => prev.filter((r) => r.id !== resourceId));
 
+    // Delete from Supabase Storage if configured
+    if (isSupabaseConfigured && supabase) {
+      // Attempt to delete the folder or file; path based on resourceId
+      deleteFile(resourceId).catch((e) => console.warn('Supabase storage delete error:', e));
+    }
+
+    // Delete DB record
     if (isSupabaseConfigured && supabase && !resourceId.startsWith('res-')) {
       safeBackgroundOp(supabase.from('resources').delete().eq('id', resourceId));
     }

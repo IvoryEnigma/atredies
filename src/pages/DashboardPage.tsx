@@ -54,27 +54,27 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
     <div className="space-y-6 sm:space-y-8 animate-in fade-in duration-200">
       
       {/* Top Academic Hero Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-[#191F2E] via-[#1E2538] to-[#191F2E] p-6 sm:p-8 border border-white/[0.08] shadow-2xl">
+      <div className="dashboard-hero relative overflow-hidden rounded-3xl bg-white light:bg-white light:bg-none dark:bg-gradient-to-r dark:from-[#191F2E] dark:via-[#1E2538] dark:to-[#191F2E] p-6 sm:p-8 border border-slate-200 dark:border-white/[0.08] shadow-md shadow-slate-200/50 dark:shadow-2xl transition-colors duration-200">
         {/* Ambient atmospheric shapes */}
-        <div className="absolute -top-16 -right-16 w-80 h-80 bg-[#8B7CFF]/15 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-16 left-1/3 w-64 h-64 bg-[#54D6C7]/10 rounded-full blur-2xl pointer-events-none" />
+        <div className="absolute -top-16 -right-16 w-80 h-80 bg-[#8B7CFF]/15 dark:bg-[#8B7CFF]/15 light:bg-[#8B7CFF]/10 rounded-full blur-3xl pointer-events-none opacity-40 dark:opacity-100" />
+        <div className="absolute -bottom-16 left-1/3 w-64 h-64 bg-[#54D6C7]/10 dark:bg-[#54D6C7]/10 light:bg-[#54D6C7]/10 rounded-full blur-2xl pointer-events-none opacity-30 dark:opacity-100" />
 
         <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
           <div className="max-w-2xl">
             <div className="flex flex-wrap items-center gap-2 mb-2">
-              <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#8B7CFF]/20 text-[#8B7CFF] text-xs font-semibold border border-[#8B7CFF]/30">
-                <span className="w-2 h-2 rounded-full bg-[#54D6C7] animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-purple-50 light:bg-purple-50 dark:bg-[#8B7CFF]/20 text-purple-700 light:text-purple-700 dark:text-[#8B7CFF] text-xs font-semibold border border-purple-200 light:border-purple-200 dark:border-[#8B7CFF]/30">
+                <span className="w-2 h-2 rounded-full bg-teal-500 light:bg-teal-500 dark:bg-[#54D6C7] animate-pulse" />
                 {user?.branch} • {user?.year} (Semester {user?.semester})
               </span>
-              <span className="text-xs text-[#A4ADBE]">
+              <span className="text-xs text-slate-500 light:text-slate-500 dark:text-[#A4ADBE]">
                 Army Institute of Technology, Pune
               </span>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[#F3F4F8]">
-              {greeting}, <span className="text-[#8B7CFF]">{user?.full_name || 'Cadet'}</span>
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 light:text-slate-900 dark:text-[#F3F4F8]">
+              {greeting}, <span className="text-[#6C5CE7] light:text-[#6C5CE7] dark:text-[#8B7CFF]">{user?.full_name || 'Cadet'}</span>
             </h1>
-            <p className="mt-1 text-xs sm:text-sm text-[#A4ADBE] leading-relaxed">
+            <p className="mt-1 text-xs sm:text-sm text-slate-600 light:text-slate-600 dark:text-[#A4ADBE] leading-relaxed">
               Your centralized academic command: explore verified SPPU notes, solve peer doubts, track deadlines, and launch Last-Night Revision mode.
             </p>
 
@@ -82,39 +82,39 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
             <div className="mt-5 flex flex-wrap items-center gap-2.5">
               <button
                 onClick={() => setActiveTab('revision')}
-                className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-[#8B7CFF] to-[#7B6CE8] text-[#10131C] hover:opacity-95 transition-all shadow-lg shadow-[#8B7CFF]/25 hover:-translate-y-0.5"
+                className="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-[#8B7CFF] to-[#7B6CE8] text-[#10131C] dark:text-[#10131C] light:text-white hover:opacity-95 transition-all shadow-lg shadow-[#8B7CFF]/25 hover:-translate-y-0.5"
               >
-                <Sparkles className="w-4 h-4 text-[#10131C]" />
+                <Sparkles className="w-4 h-4 text-[#10131C] dark:text-[#10131C] light:text-white" />
                 <span>Last-Night Revision</span>
               </button>
 
               <button
                 onClick={() => setActiveTab('doubts')}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-[#191F2E] text-[#F3F4F8] hover:bg-[#222A3D] border border-white/[0.08] transition-all hover:-translate-y-0.5"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white light:bg-slate-50 light:hover:bg-slate-100 dark:bg-[#191F2E] dark:hover:bg-[#222A3D] text-slate-800 light:text-slate-800 dark:text-[#F3F4F8] border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none transition-all hover:-translate-y-0.5"
               >
-                <MessageSquare className="w-4 h-4 text-[#54D6C7]" />
+                <MessageSquare className="w-4 h-4 text-teal-600 light:text-teal-600 dark:text-[#54D6C7]" />
                 <span>Ask a Doubt</span>
               </button>
 
               <button
                 onClick={() => setActiveTab('library')}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-[#191F2E] text-[#F3F4F8] hover:bg-[#222A3D] border border-white/[0.08] transition-all hover:-translate-y-0.5"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white light:bg-slate-50 light:hover:bg-slate-100 dark:bg-[#191F2E] dark:hover:bg-[#222A3D] text-slate-800 light:text-slate-800 dark:text-[#F3F4F8] border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none transition-all hover:-translate-y-0.5"
               >
-                <BookOpen className="w-4 h-4 text-[#8B7CFF]" />
+                <BookOpen className="w-4 h-4 text-purple-600 light:text-purple-600 dark:text-[#8B7CFF]" />
                 <span>Browse PYQs</span>
               </button>
 
               <button
                 onClick={() => setActiveTab('sgpa')}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-[#191F2E] text-[#F3F4F8] hover:bg-[#222A3D] border border-white/[0.08] transition-all hover:-translate-y-0.5"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold bg-white light:bg-slate-50 light:hover:bg-slate-100 dark:bg-[#191F2E] dark:hover:bg-[#222A3D] text-slate-800 light:text-slate-800 dark:text-[#F3F4F8] border border-slate-200 dark:border-white/[0.08] shadow-sm dark:shadow-none transition-all hover:-translate-y-0.5"
               >
-                <Calculator className="w-4 h-4 text-[#F0B86E]" />
+                <Calculator className="w-4 h-4 text-amber-600 light:text-amber-600 dark:text-[#F0B86E]" />
                 <span>Calculate SGPA</span>
               </button>
 
               <button
                 onClick={onOpenUploadModal}
-                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-[#A4ADBE] hover:text-white hover:bg-white/[0.05] transition-colors"
+                className="flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold text-slate-600 light:text-slate-600 dark:text-[#A4ADBE] hover:text-slate-900 light:hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 light:hover:bg-slate-100 dark:hover:bg-white/[0.05] transition-colors"
                 title="Upload Notes / Question Papers"
               >
                 <UploadCloud className="w-4 h-4" />
@@ -125,44 +125,44 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
 
           {/* Quick Metrics Cards */}
           <div className="grid grid-cols-3 lg:grid-cols-1 gap-2.5 sm:gap-3 shrink-0 lg:w-56">
-            <div className="p-3 rounded-2xl bg-[#10131C]/70 backdrop-blur-md border border-white/[0.06] flex items-center justify-between">
+            <div className="p-3 rounded-2xl bg-slate-50/80 light:bg-slate-50/90 dark:bg-[#10131C]/70 backdrop-blur-md border border-slate-200/80 dark:border-white/[0.06] shadow-sm dark:shadow-none flex items-center justify-between transition-colors">
               <div>
-                <span className="text-[10px] font-semibold text-[#A4ADBE] uppercase tracking-wider block">
+                <span className="text-[10px] font-semibold text-slate-500 light:text-slate-500 dark:text-[#A4ADBE] uppercase tracking-wider block">
                   Current SGPA
                 </span>
-                <span className="text-lg font-extrabold text-[#54D6C7]">
+                <span className="text-lg font-extrabold text-teal-700 light:text-teal-700 dark:text-[#54D6C7]">
                   8.92
                 </span>
               </div>
-              <div className="w-8 h-8 rounded-lg bg-[#54D6C7]/15 flex items-center justify-center text-[#54D6C7]">
+              <div className="w-8 h-8 rounded-lg bg-teal-50 light:bg-teal-50 dark:bg-[#54D6C7]/15 border border-teal-200/60 dark:border-transparent flex items-center justify-center text-teal-600 light:text-teal-600 dark:text-[#54D6C7]">
                 <TrendingUp className="w-4 h-4" />
               </div>
             </div>
 
-            <div className="p-3 rounded-2xl bg-[#10131C]/70 backdrop-blur-md border border-white/[0.06] flex items-center justify-between">
+            <div className="p-3 rounded-2xl bg-slate-50/80 light:bg-slate-50/90 dark:bg-[#10131C]/70 backdrop-blur-md border border-slate-200/80 dark:border-white/[0.06] shadow-sm dark:shadow-none flex items-center justify-between transition-colors">
               <div>
-                <span className="text-[10px] font-semibold text-[#A4ADBE] uppercase tracking-wider block">
+                <span className="text-[10px] font-semibold text-slate-500 light:text-slate-500 dark:text-[#A4ADBE] uppercase tracking-wider block">
                   Attendance
                 </span>
-                <span className="text-lg font-extrabold text-[#8B7CFF]">
+                <span className="text-lg font-extrabold text-purple-700 light:text-purple-700 dark:text-[#8B7CFF]">
                   88.4%
                 </span>
               </div>
-              <div className="w-8 h-8 rounded-lg bg-[#8B7CFF]/15 flex items-center justify-center text-[#8B7CFF]">
+              <div className="w-8 h-8 rounded-lg bg-purple-50 light:bg-purple-50 dark:bg-[#8B7CFF]/15 border border-purple-200/60 dark:border-transparent flex items-center justify-center text-purple-600 light:text-purple-600 dark:text-[#8B7CFF]">
                 <Award className="w-4 h-4" />
               </div>
             </div>
 
-            <div className="p-3 rounded-2xl bg-[#10131C]/70 backdrop-blur-md border border-white/[0.06] flex items-center justify-between">
+            <div className="p-3 rounded-2xl bg-slate-50/80 light:bg-slate-50/90 dark:bg-[#10131C]/70 backdrop-blur-md border border-slate-200/80 dark:border-white/[0.06] shadow-sm dark:shadow-none flex items-center justify-between transition-colors">
               <div>
-                <span className="text-[10px] font-semibold text-[#A4ADBE] uppercase tracking-wider block">
+                <span className="text-[10px] font-semibold text-slate-500 light:text-slate-500 dark:text-[#A4ADBE] uppercase tracking-wider block">
                   Pending Tasks
                 </span>
-                <span className="text-lg font-extrabold text-[#F0B86E]">
+                <span className="text-lg font-extrabold text-amber-600 light:text-amber-600 dark:text-[#F0B86E]">
                   {pendingAssignments.length}
                 </span>
               </div>
-              <div className="w-8 h-8 rounded-lg bg-[#F0B86E]/15 flex items-center justify-center text-[#F0B86E]">
+              <div className="w-8 h-8 rounded-lg bg-amber-50 light:bg-amber-50 dark:bg-[#F0B86E]/15 border border-amber-200/60 dark:border-transparent flex items-center justify-center text-amber-600 light:text-amber-600 dark:text-[#F0B86E]">
                 <Clock className="w-4 h-4" />
               </div>
             </div>

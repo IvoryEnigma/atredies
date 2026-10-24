@@ -5,6 +5,7 @@ export const AIT_BRANCHES = [
   { code: 'IT', name: 'Information Technology' },
   { code: 'ENTC', name: 'Electronics & Telecommunication' },
   { code: 'MECH', name: 'Mechanical Engineering' },
+  { code: 'AIDS', name: 'AI & Data Science' },
 ] as const;
 
 export const AIT_YEARS = [
@@ -110,6 +111,30 @@ export const INITIAL_SUBJECTS: Subject[] = [
     unitsCount: 6,
     description: 'Gas turbines, vapor power cycles, internal combustion engine performance, and psychrometric analysis.',
     facultyName: 'Prof. H. V. Kadam',
+  },
+  {
+    id: 'sub-aids-ml',
+    code: '317541',
+    name: 'Machine Learning',
+    branch: 'AIDS',
+    year: 'TE',
+    semester: 5,
+    credits: 3,
+    unitsCount: 6,
+    description: 'Supervised & unsupervised learning, decision trees, SVM, neural networks, ensemble methods, and model evaluation metrics.',
+    facultyName: 'Dr. S. M. Chavan',
+  },
+  {
+    id: 'sub-aids-nlp',
+    code: '317542',
+    name: 'Natural Language Processing',
+    branch: 'AIDS',
+    year: 'TE',
+    semester: 5,
+    credits: 3,
+    unitsCount: 6,
+    description: 'Text preprocessing, language models, sequence-to-sequence architectures, transformers, and sentiment analysis.',
+    facultyName: 'Prof. A. R. Kulkarni',
   },
 ];
 

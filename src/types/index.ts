@@ -1,6 +1,6 @@
 export type UserRole = 'student' | 'mentor' | 'admin';
 
-export type Branch = 'COMP' | 'IT' | 'ENTC' | 'MECH';
+export type Branch = 'COMP' | 'IT' | 'ENTC' | 'MECH' | 'AIDS';
 
 export type AcademicYear = 'FE' | 'SE' | 'TE' | 'BE';
 

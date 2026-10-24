@@ -155,14 +155,14 @@ const MainLayout: React.FC = () => {
       />
 
       {/* Institutional Footer */}
-      <footer className="border-t border-white/[0.08] dark:border-white/[0.08] light:border-slate-200 bg-[#10131C] dark:bg-[#10131C] light:bg-slate-100 py-6 px-4 sm:px-8 text-center text-xs text-[#A4ADBE] space-y-2">
-        <p className="font-medium text-[#F3F4F8] dark:text-[#F3F4F8] light:text-slate-800">
+      <footer className="border-t border-white/[0.08] dark:border-white/[0.08] light:border-slate-200 bg-[#10131C] dark:bg-[#10131C] light:bg-slate-100 py-3 px-4 sm:px-8 text-center text-xs text-[#A4ADBE] space-y-1">
+        <p className="font-medium text-[#F3F4F8] dark:text-[#F3F4F8] light:text-slate-800 text-[12px] leading-tight">
           Army Institute of Technology (AIT), Pune — Academia Hub
         </p>
-        <p className="text-[11px] text-[#A4ADBE]">
+        <p className="text-[10px] text-[#A4ADBE] leading-tight">
           Designed for Cadet Peer Learning, SPPU Exam Preparation, and Department Resource Consolidation.
         </p>
-        <div className="flex items-center justify-center gap-4 text-[10px] text-[#A4ADBE]/60 pt-1">
+        <div className="flex items-center justify-center gap-3 text-[9px] text-[#A4ADBE]/60 pt-0.5">
           <span>SPPU 2019/2024 Curriculum</span>
           <span>•</span>
           <span>Supabase Auth & PostgreSQL</span>

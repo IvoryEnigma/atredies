@@ -200,6 +200,12 @@ html.light .bg-\[\#191F2E\] {
   background-color: #FFFFFF !important;
   box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06) !important;
 }
+html.light .dashboard-hero {
+  background-color: #FFFFFF !important;
+  background-image: none !important;
+  border-color: #E2E8F0 !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06) !important;
+}
 html.light .bg-\[\#191F2E\]\/80,
 html.light .bg-\[\#191F2E\]\/70 {
   background-color: rgba(255, 255, 255, 0.92) !important;
