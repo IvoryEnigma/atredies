@@ -90,7 +90,7 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeTab, setActiveTab }) => 
   ];
 
   return (
-    <aside className="hidden lg:flex flex-col w-64 shrink-0 min-h-[calc(100vh-4rem)] p-4 border-r border-white/[0.08] dark:border-white/[0.08] light:border-slate-200 bg-[#10131C] dark:bg-[#10131C] light:bg-slate-50 select-none">
+    <aside className="hidden lg:flex flex-col w-64 shrink-0 h-full overflow-y-auto p-4 border-r border-white/[0.08] dark:border-white/[0.08] light:border-slate-200 bg-[#10131C] dark:bg-[#10131C] light:bg-slate-50 select-none">
       
       {/* Navigation Group */}
       <div className="space-y-1">

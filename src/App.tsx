@@ -60,7 +60,7 @@ const MainLayout: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-[#10131C] dark:bg-[#10131C] light:bg-slate-50 text-[#F3F4F8] dark:text-[#F3F4F8] light:text-slate-900 flex flex-col transition-colors duration-200">
+    <div className="flex flex-col h-screen bg-[#10131C] dark:bg-[#10131C] light:bg-slate-50 text-[#F3F4F8] dark:text-[#F3F4F8] light:text-slate-900 transition-colors duration-200">
       
       {/* Header */}
       <Header
@@ -71,13 +71,13 @@ const MainLayout: React.FC = () => {
       />
 
       {/* Main Body with Sidebar + Active Page */}
-      <div className="flex-1 max-w-7xl w-full mx-auto flex">
+      <div className="flex-1 max-w-7xl w-full mx-auto flex overflow-hidden">
         
         {/* Desktop Sidebar */}
         <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
 
         {/* Content Viewport */}
-        <main className="flex-1 p-4 sm:p-6 lg:p-8 pb-24 lg:pb-12 min-w-0">
+        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 pb-24 lg:pb-12 min-w-0">
           
           {/* Sample Demo Banner */}
           <div className="mb-6 p-3 rounded-2xl bg-[#191F2E] border border-white/[0.06] flex items-center justify-between text-xs text-[#A4ADBE]">
