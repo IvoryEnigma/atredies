@@ -200,13 +200,13 @@ export const Header: React.FC<HeaderProps> = ({
               aria-label="User profile settings menu"
             >
               <img
-                src={user?.avatar_url || `https://api.dicebear.com/7.x/initials/svg?seed=${user?.full_name || 'Cadet'}`}
+                src={user?.avatar_url || `https://api.dicebear.com/7.x/initials/svg?seed=${user?.full_name?.replace(/^Cadet\s+/i, '') || 'User'}`}
                 alt={user?.full_name || 'User Profile'}
                 className="w-7 h-7 rounded-lg object-cover ring-1 ring-[#8B7CFF]/40"
               />
               <div className="hidden xl:flex flex-col text-left pr-1">
                 <span className="text-xs font-semibold text-[#F3F4F8] dark:text-[#F3F4F8] light:text-slate-900 leading-tight">
-                  {user?.full_name?.split(' ')[0] || 'Cadet'}
+                  {user?.full_name?.replace(/^Cadet\s+/i, '')?.split(' ')[0] || 'User'}
                 </span>
                 <span className="text-[10px] font-medium text-[#54D6C7] leading-none uppercase">
                   {user?.role || 'student'}
@@ -218,13 +218,13 @@ export const Header: React.FC<HeaderProps> = ({
               <div className="absolute right-0 mt-2 w-72 rounded-2xl bg-[#191F2E] dark:bg-[#191F2E] light:bg-white border border-white/[0.08] dark:border-white/[0.08] light:border-slate-200 shadow-2xl p-4 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
                 <div className="flex items-center gap-3 pb-3 border-b border-white/[0.06] mb-3">
                   <img
-                    src={user?.avatar_url || `https://api.dicebear.com/7.x/initials/svg?seed=${user?.full_name || 'Cadet'}`}
+                    src={user?.avatar_url || `https://api.dicebear.com/7.x/initials/svg?seed=${user?.full_name?.replace(/^Cadet\s+/i, '') || 'User'}`}
                     alt={user?.full_name || 'Profile'}
                     className="w-10 h-10 rounded-xl object-cover ring-2 ring-[#8B7CFF]/50"
                   />
                   <div className="min-w-0">
                     <h3 className="text-xs font-bold text-[#F3F4F8] dark:text-[#F3F4F8] light:text-slate-900 truncate">
-                      {user?.full_name}
+                      {user?.full_name?.replace(/^Cadet\s+/i, '')}
                     </h3>
                     <p className="text-[11px] text-[#A4ADBE] truncate">
                       {user?.email}

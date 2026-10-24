@@ -48,7 +48,7 @@ export const getStoredAccounts = (): Record<string, RegisteredAccount> => {
       id: 'usr-ait-cadet-01',
       email: 'cadet.sharma@aitpune.edu.in',
       password: 'aitpune@2026',
-      full_name: 'Cadet Aryan Sharma',
+      full_name: 'Aryan Sharma',
       role: 'student',
       branch: 'COMP',
       year: 'TE',
@@ -111,7 +111,7 @@ export const saveAccount = (account: RegisteredAccount) => {
 const DEFAULT_DEMO_USER: UserProfile = {
   id: 'usr-ait-cadet-01',
   email: 'cadet.sharma@aitpune.edu.in',
-  full_name: 'Cadet Aryan Sharma',
+  full_name: 'Aryan Sharma',
   role: 'student',
   branch: 'COMP',
   year: 'TE',
@@ -127,7 +127,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const saved = localStorage.getItem('ait_auth_user');
     if (saved) {
       try {
-        return JSON.parse(saved);
+        const parsed = JSON.parse(saved);
+        if (parsed && typeof parsed.full_name === 'string') {
+          parsed.full_name = parsed.full_name.replace(/^Cadet\s+/i, '');
+        }
+        return parsed;
       } catch {
         return null;
       }
@@ -450,7 +454,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         ? 'Maj. Gen. (Retd) Admin Office' 
         : role === 'mentor' 
         ? 'Prof. Neha Deshmukh (Dept HOD)' 
-        : (storedAcc?.full_name || user.full_name || 'Cadet Scholar'),
+        : (storedAcc?.full_name?.replace(/^Cadet\s+/i, '') || user.full_name?.replace(/^Cadet\s+/i, '') || 'Aryan Sharma'),
     };
     setUser(updated);
     localStorage.setItem('ait_auth_user', JSON.stringify(updated));

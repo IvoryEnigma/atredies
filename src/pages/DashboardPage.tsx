@@ -72,7 +72,7 @@ export const DashboardPage: React.FC<DashboardPageProps> = ({
             </div>
 
             <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 light:text-slate-900 dark:text-[#F3F4F8]">
-              {greeting}, <span className="text-[#6C5CE7] light:text-[#6C5CE7] dark:text-[#8B7CFF]">{user?.full_name || 'Cadet'}</span>
+              {greeting}, <span className="text-[#6C5CE7] light:text-[#6C5CE7] dark:text-[#8B7CFF]">{user?.full_name?.replace(/^Cadet\s+/i, '') || 'Scholar'}</span>
             </h1>
             <p className="mt-1 text-xs sm:text-sm text-slate-600 light:text-slate-600 dark:text-[#A4ADBE] leading-relaxed">
               Your centralized academic command: explore verified SPPU notes, solve peer doubts, track deadlines, and launch Last-Night Revision mode.

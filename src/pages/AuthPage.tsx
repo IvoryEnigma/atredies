@@ -279,7 +279,7 @@ export const AuthPage: React.FC = () => {
                 <input
                   type="text"
                   required
-                  placeholder="Cadet Aryan Sharma"
+                  placeholder="Aryan Sharma"
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
                   className="w-full pl-10 pr-4 py-2 rounded-xl bg-[#10131C] text-[#F3F4F8] placeholder-[#A4ADBE]/50 border border-white/[0.08] focus:border-[#8B7CFF]"
